@@ -10,8 +10,9 @@
   },
   "license": "MIT",
   "files": [
+    "LICENSE",
     "index.js",
-    "LICENSE"
+    "utils.js"
   ],
   "main": "index.js",
   "engines": {
@@ -22,5 +23,8 @@
   },
   "keywords": [
     "generategenerator"
-  ]
+  ],
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
 }

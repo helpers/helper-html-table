@@ -182,7 +182,6 @@ utils.normalizeTable = function(table) {
   return table;
 };
 
-
 /**
  * Expose `utils` modules
  */

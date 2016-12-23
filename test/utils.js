@@ -18,14 +18,14 @@ describe('utils', function() {
     it('should normalize a row from an array of column strings', function() {
       var expected = {
         cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]
-      }
+      };
       assert.deepEqual(utils.normalizeRow(['foo', 'bar', 'baz']), expected);
     });
 
     it('should normalize a row from an array of mixed column types', function() {
       var expected = {
         cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]
-      }
+      };
       assert.deepEqual(utils.normalizeRow(['foo', {text: 'bar'}, 'baz']), expected);
     });
 
@@ -34,7 +34,7 @@ describe('utils', function() {
       var expected = {
         attr: 'class="error"',
         cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]
-      }
+      };
       assert.deepEqual(utils.normalizeRow(row), expected);
     });
 
@@ -43,7 +43,7 @@ describe('utils', function() {
       var expected = {
         attr: 'class="error"',
         cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]
-      }
+      };
       assert.deepEqual(utils.normalizeRow(row), expected);
     });
 
@@ -83,7 +83,7 @@ describe('utils', function() {
         rows: [
           {cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]}
         ]
-      }
+      };
       assert.deepEqual(utils.normalizeSection(row), expected);
     });
 

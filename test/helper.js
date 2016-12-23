@@ -18,7 +18,7 @@ describe('helper', function() {
     it('should throw an error when invalid args are passed', function(cb) {
       try {
         var tmpl = '<%= table() %>';
-        var html = engine.render(tmpl);
+        engine.render(tmpl);
         cb(new Error('expected an error'));
       } catch (err) {
         assert(err);
@@ -107,7 +107,7 @@ describe('helper', function() {
     it('should throw an error when invalid args are passed', function(cb) {
       try {
         var tmpl = '{{table}}';
-        var html = engine.compile(tmpl)();
+        engine.compile(tmpl)();
         cb(new Error('expected an error'));
       } catch (err) {
         assert(err);
@@ -236,7 +236,7 @@ describe('helper', function() {
 </table>
 `;
 
-      var tmpl = `{{{render (table test)}}}`;
+      var tmpl = '{{{render (table test)}}}';
       var actual = engine.compile(tmpl)({test: table, title: 'identifier'});
       assert.equal(actual, expected);
     });

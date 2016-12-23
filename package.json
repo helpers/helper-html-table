@@ -58,7 +58,9 @@
       "generate",
       "generate-helper",
       "verb",
-      "verb-generate-readme"
+      "verb-generate-readme",
+      "engine",
+      "handlebars"
     ]
   }
 }

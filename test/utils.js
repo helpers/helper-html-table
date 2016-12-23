@@ -135,4 +135,79 @@ describe('utils', function() {
       assert.deepEqual(utils.normalizeTable(table), expected);
     });
   });
+
+  describe('html', function() {
+    it('should create an html element start tag with the specified name', function() {
+      assert.equal(utils.htmlElement('td'), '<td>');
+    });
+
+    it('should create an html element start tag with the specified name and attributes', function() {
+      assert.equal(utils.htmlElement('td', 'class="error"'), '<td class="error">');
+    });
+
+    it('should create an html table cell with the specified name', function() {
+      assert.equal(utils.htmlCell('td')({text: 'foo'}), '<td>foo</td>');
+    });
+
+    it('should create an html table cell with the specified name and attributes', function() {
+      assert.equal(utils.htmlCell('td')({text: 'foo', attr: 'class="error"'}), '<td class="error">foo</td>');
+    });
+
+    it('should create an html table row with the specified name', function() {
+      var row = {
+        cols: [{text: 'foo'}, {text: 'bar'}, {text: 'baz'}]
+      };
+      assert.equal(utils.htmlRow('td')(row), '    <tr>\n      <td>foo</td>\n      <td>bar</td>\n      <td>baz</td>\n    </tr>');
+    });
+
+    it('should create an html table row with the specified name and attributes', function() {
+      var row = {
+        attr: 'class="error"',
+        cols: [{text: 'foo'}, {attr: 'class="info"', text: 'bar'}, {text: 'baz'}]
+      };
+      assert.equal(utils.htmlRow('td')(row), '    <tr class="error">\n      <td>foo</td>\n      <td class="info">bar</td>\n      <td>baz</td>\n    </tr>');
+    });
+
+    it('should create an html table section with the specified name', function() {
+      var table = utils.normalizeTable({thead: [['foo', 'bar', 'baz']]});
+      var expected = `  <thead>
+    <tr>
+      <th>foo</th>
+      <th>bar</th>
+      <th>baz</th>
+    </tr>
+  </thead>
+`;
+      assert.equal(utils.htmlSection(table, 'thead', 'th'), expected);
+    });
+
+    it('should create an html table section with the specified name and attributes', function() {
+      var table = utils.normalizeTable({
+        tbody: {
+          attr: 'class="qux"',
+          rows: [
+            ['foo', 'bar', 'baz'],
+            {
+              attr: 'class="error"',
+              cols: ['foo', {attr: 'class="info"', text: 'bar'}, 'baz']
+            }
+          ]
+        }
+      });
+      var expected = `  <tbody class="qux">
+    <tr>
+      <td>foo</td>
+      <td>bar</td>
+      <td>baz</td>
+    </tr>
+    <tr class="error">
+      <td>foo</td>
+      <td class="info">bar</td>
+      <td>baz</td>
+    </tr>
+  </tbody>
+`;
+      assert.equal(utils.htmlSection(table, 'tbody', 'td'), expected);
+    });
+  });
 });

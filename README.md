@@ -16,6 +16,102 @@ $ npm install --save helper-html-table
 var htmlTable = require('helper-html-table');
 ```
 
+### EJS
+
+Use with an ejs style template engine like [engine](https://github.com/jonschlinkert/engine):
+
+```js
+var Engine = require('engine');
+var engine = new Engine();
+engine.helper('htmltable', htmlTable);
+
+var tmpl = '<%= htmltable(table) %>';
+var data = {
+  table: {
+    attr: 'class="table"',
+    thead: [['Foo', 'Bar', 'Baz']],
+    tbody: [
+      ['foo', 'bar', 'baz'],
+      ['FOO', 'BAR', 'BAZ']
+    ]
+  }
+}
+var html = engine.render(tmpl, data);
+console.log(html);
+```
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Foo</th>
+      <th>Bar</th>
+      <th>Baz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>foo</td>
+      <td>bar</td>
+      <td>baz</td>
+    </tr>
+    <tr>
+      <td>FOO</td>
+      <td>BAR</td>
+      <td>BAZ</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Handlebars
+
+Use with [handlebars](http://www.handlebarsjs.com/):
+
+```js
+var Handlebars = require('handlebars');
+handlebars.registerHelper('htmltable', htmlTable);
+
+var tmpl = '{{htmltable table}}';
+var data = {
+  table: {
+    attr: 'class="table"',
+    thead: [['Foo', 'Bar', 'Baz']],
+    tbody: [
+      ['foo', 'bar', 'baz'],
+      ['FOO', 'BAR', 'BAZ']
+    ]
+  }
+}
+var compiled = handlebars.compile(tmpl);
+var html = compiled(data);
+console.log(html);
+```
+
+```html
+<table class="table">
+  <thead>
+    <tr>
+      <th>Foo</th>
+      <th>Bar</th>
+      <th>Baz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>foo</td>
+      <td>bar</td>
+      <td>baz</td>
+    </tr>
+    <tr>
+      <td>FOO</td>
+      <td>BAR</td>
+      <td>BAZ</td>
+    </tr>
+  </tbody>
+</table>
+```
+
 ## API
 
 **Example**

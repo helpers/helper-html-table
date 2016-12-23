@@ -73,7 +73,7 @@ utils.htmlRow = function(name) {
 
 utils.htmlSection = function(table, section, name) {
   var html = `  ${utils.htmlElement(section, table[section].attr)}\n`;
-  html += table[section].rows.map(utils.htmlRow(name)).join('\n  ');
+  html += table[section].rows.map(utils.htmlRow(name)).join('\n');
   html += `\n  </${section}>\n`;
   return html;
 };

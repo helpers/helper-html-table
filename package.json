@@ -26,7 +26,30 @@
   ],
   "devDependencies": {
     "engine": "^0.1.12",
+    "gulp-format-md": "^0.1.11",
     "handlebars": "^4.0.6",
     "mocha": "^3.2.0"
+  },
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "generate",
+      "generate-helper",
+      "verb",
+      "verb-generate-readme"
+    ]
   }
 }

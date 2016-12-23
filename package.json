@@ -10,7 +10,6 @@
   },
   "license": "MIT",
   "files": [
-    "LICENSE",
     "index.js",
     "utils.js"
   ],
@@ -21,15 +20,25 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "generategenerator"
-  ],
   "devDependencies": {
     "engine": "^0.1.12",
     "gulp-format-md": "^0.1.11",
     "handlebars": "^4.0.6",
     "mocha": "^3.2.0"
   },
+  "keywords": [
+    "handlebars",
+    "helper",
+    "helper-html-table",
+    "helpers",
+    "html",
+    "html-table",
+    "htmltable",
+    "lodash",
+    "table",
+    "template",
+    "templates"
+  ],
   "verb": {
     "toc": false,
     "layout": "default",
